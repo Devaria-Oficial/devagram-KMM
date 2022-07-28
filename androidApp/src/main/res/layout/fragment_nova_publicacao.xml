@@ -5,10 +5,29 @@
     android:layout_height="match_parent"
     tools:context=".fragments.NovaPublicacaoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Nova publicacao" />
+    <RelativeLayout
+        android:id="@+id/container_avatar"
+        style="@style/NovaPublicaoContainerStyle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        >
 
+        <ImageView
+            android:id="@+id/imagem"
+            style="@style/PerfilAvatarHeaderStyle"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/imagem_default" />
+
+        <EditText
+            android:id="@+id/input_descricao"
+            style="@style/NovaPublicacaoInput"
+            android:layout_centerHorizontal="true"
+            android:layout_toEndOf="@id/imagem"
+            android:hint="@string/input_legenda"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:selectAllOnFocus="true" />
+
+    </RelativeLayout>
 </FrameLayout>

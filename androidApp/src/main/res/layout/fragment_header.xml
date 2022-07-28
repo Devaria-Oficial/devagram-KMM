@@ -98,4 +98,103 @@
             android:src="@drawable/logout"></ImageView>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:visibility="gone"
+        style="@style/HeaderStyle"
+        android:id="@+id/header_editar_perfil"
+        android:background="@drawable/header_background"
+        >
+
+        <TextView
+            android:id="@+id/cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/botao_cancelar"
+            android:fontFamily="@font/biennale"
+            android:textSize="12dp"
+            android:textColor="@color/cinza4"
+            android:layout_marginHorizontal="20dp"
+            android:layout_centerVertical="true"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/editar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/editar_perfil"
+                android:fontFamily="@font/biennale"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="@color/cinza4"
+                android:layout_marginHorizontal="3dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/concluir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/botao_concluir"
+            android:fontFamily="@font/biennale"
+            android:textSize="12dp"
+            android:textColor="@color/corPrimaria2"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        style="@style/HeaderStyle"
+        android:id="@+id/header_nova_publicacao"
+        android:background="@drawable/header_background"
+        >
+
+        <ImageView
+            style="@style/HeaderVoltarStyle"
+            android:id="@+id/voltar_nova_publicacao"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/voltar"></ImageView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/nova_publicacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nova_publicacao"
+                android:fontFamily="@font/biennale"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="@color/cinza4"
+                android:layout_marginHorizontal="3dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/compartilhar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/botao_compartilhar"
+            android:fontFamily="@font/biennale"
+            android:textSize="12dp"
+            android:textColor="@color/corPrimaria2"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
 </FrameLayout>

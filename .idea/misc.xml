@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/drawable/botao_outline_perfil_background.xml" value="0.196" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/drawable/botao_perfil_background.xml" value="0.196" />
+        <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/drawable/editar_perfil_header_background.xml" value="0.2095" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/drawable/footer_background.xml" value="0.2295" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/drawable/header_background.xml" value="0.2295" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/drawable/input_header_background.xml" value="0.2295" />
@@ -13,9 +14,10 @@
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/activity_feed.xml" value="0.20208333333333334" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/fragment_editar_perfil.xml" value="0.33" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/fragment_feed.xml" value="0.24365942028985507" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/fragment_header.xml" value="0.55" />
-        <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/fragment_nova_publicacao.xml" value="0.24365942028985507" />
+        <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/fragment_nova_publicacao.xml" value="0.67" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/fragment_perfil.xml" value="0.5" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/item_comentario.xml" value="0.37373737373737376" />
         <entry key="..\:/projetos-git/devaria-aulas/2022/devagram-KMM/androidApp/src/main/res/layout/item_publicacao.xml" value="0.4444444444444444" />

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.EditarPerfilFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        >
+
+        <RelativeLayout
+            android:id="@+id/container_editar_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/editar_perfil_header_background"
+            >
+
+            <RelativeLayout
+                android:id="@+id/container_avatar"
+                style="@style/PerfilHeaderStyle"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatar"
+                    style="@style/PerfilAvatarHeaderStyle"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/avatar" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/alterar_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/container_avatar"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:id="@+id/botao_alterar_foto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/botao_alterar_foto"
+                    android:fontFamily="@font/biennale"
+                    android:textColor="@color/corPrimaria2"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
+                />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/HeaderStyle"
+            android:id="@+id/header_editar_perfil"
+            android:layout_below="@id/container_editar_avatar"
+            android:background="@drawable/editar_perfil_header_background"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nome"
+                android:fontFamily="@font/biennale"
+                android:textSize="14dp"
+                android:textColor="@color/cinza4"
+                android:layout_marginHorizontal="20dp"
+                android:layout_centerVertical="true"
+                />
+
+            <RelativeLayout
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/input_editar_nome"
+                    style="@style/EditarPerfilInputNomeStyle"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/input_nome"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+
+            <ImageView
+                style="@style/EditarPerfilLimparInputNomeStyle"
+                android:id="@+id/limpar"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/limpar"></ImageView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

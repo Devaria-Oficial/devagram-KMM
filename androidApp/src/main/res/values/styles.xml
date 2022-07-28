@@ -186,4 +186,41 @@
         <item name="textAllCaps">false</item>
     </style>
 
+
+<!--    Editar perfil-->
+    <style name="EditarPerfilInputNomeStyle" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/biennale</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">19dp</item>
+        <item name="android:textColor">@color/cinza4</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:backgroundTint">@color/branco</item>
+    </style>
+
+    <style name="EditarPerfilLimparInputNomeStyle" >
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+    </style>
+
+<!--    Nova publicacao-->
+
+    <style name="NovaPublicaoContainerStyle">
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginVertical">16dp</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+    </style>
+
+    <style name="NovaPublicacaoInput" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/biennale</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/cinza2</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:backgroundTint">@color/branco</item>
+        <item name="android:minLines">4</item>
+        <item name="android:lines">6</item>
+    </style>
 </resources>

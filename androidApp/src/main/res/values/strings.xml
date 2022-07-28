@@ -12,11 +12,22 @@
     <string name="input_pesquisar">Pesquisar</string>
     <string name="rota_home">HOME</string>
     <string name="rota_nova_publicacao">NOVA_PUBLICACAO</string>
+    <string name="rota_editar_perfil">EDITAR_PERFIL</string>
     <string name="rota_perfil">PERFIL</string>
+    <string name="rota_perfil_expecifico">PERFIL_EXPECIFICO</string>
     <string name="curtido_por">Curtido por</string>
     <string name="qtd_curtidas">0 pessoas</string>
     <string name="input_comentario">Adicione um comentário ...</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="botao_seguir">Seguir</string>
+    <string name="botao_deixar_seguir">Deixar de seguir</string>
+    <string name="botao_editar">Editar</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="botao_cancelar">Cancelar</string>
+    <string name="botao_concluir">Concluir</string>
+    <string name="botao_alterar_foto"><u>Alterar foto do perfil</u></string>
+    <string name="nome">Nome</string>
+    <string name="nova_publicacao">Nova publicação</string>
+    <string name="botao_compartilhar">Compartilhar</string>
+    <string name="input_legenda">Escreva uma legenda...</string>
 
 </resources>

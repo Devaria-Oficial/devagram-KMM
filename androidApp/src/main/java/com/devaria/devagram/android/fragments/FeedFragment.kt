@@ -20,12 +20,24 @@ import io.ktor.client.call.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
+private const val ARG_PARAM1 = "idPerfil"
+private const val ARG_PARAM2 = "nomePerfil"
+private const val ARG_PARAM3 = "avatarPerfil"
+
 class FeedFragment : Fragment() {
     private val mainScope = MainScope()
 
+    private var idPerfil: String? = null
+    private var nomePerfil: String? = null
+    private var avatarPerfil: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {}
+        arguments?.let {
+            idPerfil = it.getString(ARG_PARAM1)
+            nomePerfil = it.getString(ARG_PARAM2)
+            avatarPerfil = it.getString(ARG_PARAM3)
+        }
     }
 
     override fun onCreateView(
@@ -39,12 +51,11 @@ class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val publicacoes: ArrayList<Publicacao> = ArrayList<Publicacao>()
-
+        val shared = context?.getSharedPreferences("devagram", Context.MODE_PRIVATE)
+        val token = shared!!.getString("token", "")
         mainScope.launch {
             kotlin.runCatching {
-                val token = context?.getSharedPreferences("devagram", Context.MODE_PRIVATE)?.getString("token", "")
-                Feed().getFeed(token!!)
+                Feed().getFeed(token!!, idPerfil)
             }.onSuccess {
                 if(it.status.value >= 400){
                     val erroData : ResponseErro = it.body()
@@ -52,6 +63,10 @@ class FeedFragment : Fragment() {
                     context?.let { context -> Dialog(context).show("Erro", "Erro: ${erroData.erro}") }
                 }else{
                     val publicacoes : ArrayList<Publicacao> = it.body()
+                    publicacoes.map { it ->
+                        if(it.usuario == null){
+                            it.usuario =  Usuario(idPerfil, nomePerfil!!, avatarPerfil )
+                        }}
                     val adapter = PublicoesAdapter(view.context, publicacoes)
                     val listView : ListView = view.findViewById(R.id.list_view)
                     listView.adapter = adapter
@@ -61,15 +76,17 @@ class FeedFragment : Fragment() {
                 context?.let { context -> Dialog(context).show("Erro", "Erro: ${it.localizedMessage}") }
             }
         }
-
-        val adapter = PublicoesAdapter(view.context, publicacoes)
-        val listView : ListView = view.findViewById(R.id.list_view)
-        listView.adapter = adapter
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            FeedFragment()
+        fun newInstance(idPerfil: String?, nomePerfil: String?, avatarPerfil: String?) =
+            FeedFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, idPerfil)
+                    putString(ARG_PARAM2, nomePerfil)
+                    putString(ARG_PARAM3, avatarPerfil)
+                }
+            }
     }
 }

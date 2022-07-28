@@ -12,5 +12,5 @@ class Publicacao(
    var data: String,
    var comentarios: ArrayList<Comentario>,
    var likes: ArrayList<String>,
-   var usuario: Usuario
+   var usuario: Usuario? = null
 ) {}

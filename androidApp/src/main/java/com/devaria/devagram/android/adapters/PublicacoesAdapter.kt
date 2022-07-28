@@ -8,7 +8,11 @@ import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import com.devaria.devagram.android.R
+import com.devaria.devagram.android.fragments.PerfilFragment
+import com.devaria.devagram.android.services.Rotas
 import com.devaria.devagram.android.utils.Dialog
 import com.devaria.devagram.android.utils.DownloadImagem
 import com.devaria.devagram.dto.ComentarioDto
@@ -68,17 +72,24 @@ class PublicoesAdapter(context: Context?, publicacoes: ArrayList<Publicacao>) :
             curtir.setImageDrawable(context.resources.getDrawable(R.drawable.curtir))
         }
 
-        if(publicacao!!.usuario.avatar != ""){
-            DownloadImagem(avatar).execute(publicacao!!.usuario.avatar)
-            DownloadImagem(avatarInput).execute(publicacao!!.usuario.avatar)
+        if(publicacao!!.usuario?.avatar != ""){
+            DownloadImagem(avatar).execute(publicacao!!.usuario?.avatar)
+            DownloadImagem(avatarInput).execute(publicacao!!.usuario?.avatar)
         }
 
         DownloadImagem(imagem).execute(publicacao!!.foto)
 
-        nome.setText(publicacao!!.usuario.nome)
+        nome.setText(publicacao?.usuario?.nome)
         qtdCurtidas.setText(qtdLikes.toString() + " pessoas")
-        val descricaoFormatada = "<b>${publicacao!!.usuario.nome}</b> ${publicacao!!.descricao}"
+        val descricaoFormatada = "<b>${publicacao?.usuario?.nome}</b> ${publicacao!!.descricao}"
         descricao.text = HtmlCompat.fromHtml(descricaoFormatada, HtmlCompat.FROM_HTML_MODE_LEGACY)
+
+        avatar.setOnClickListener{
+            shared.edit().putString("id_perfil", publicacao.idUsuario).apply()
+            shared.edit().putString("nome_perfil", publicacao.usuario?.nome).apply()
+            shared.edit().putString("avatar_perfil", publicacao.usuario?.avatar).apply()
+            Rotas(context).setRota(PerfilFragment.newInstance(publicacao.idUsuario), context.resources.getString(R.string.rota_perfil_expecifico ))
+        }
 
         curtir.setOnClickListener {
             mainScope.launch  {
@@ -153,7 +164,4 @@ class PublicoesAdapter(context: Context?, publicacoes: ArrayList<Publicacao>) :
 
         return convertView
     }
-
-
-
 }

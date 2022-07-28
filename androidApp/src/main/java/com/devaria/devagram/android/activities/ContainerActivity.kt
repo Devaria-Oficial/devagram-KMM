@@ -11,6 +11,7 @@ import com.devaria.devagram.android.fragments.FeedFragment
 import com.devaria.devagram.android.fragments.HeaderFragment
 import com.devaria.devagram.android.fragments.NovaPublicacaoFragment
 import com.devaria.devagram.android.fragments.PerfilFragment
+import com.devaria.devagram.android.services.Rotas
 import com.devaria.devagram.android.utils.Dialog
 import com.devaria.devagram.model.Cadastrar.ResponseErro
 import com.devaria.devagram.services.Usuario
@@ -20,6 +21,9 @@ import kotlinx.coroutines.launch
 
 class ContainerActivity : AppCompatActivity() {
     private val mainScope = MainScope()
+    lateinit var botaoHome : ImageView
+    lateinit var botaoPublicao : ImageView
+    lateinit var botaoPerfil : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val shared = getSharedPreferences("devagram", Context.MODE_PRIVATE)
@@ -27,55 +31,47 @@ class ContainerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_container)
 
-        var botaoHome : ImageView = findViewById(R.id.home)
-        var botaoPublicao : ImageView = findViewById(R.id.add_publicacao)
-        var botaoPerfil : ImageView = findViewById(R.id.perfil)
+        botaoHome = findViewById(R.id.home)
+        botaoPublicao = findViewById(R.id.add_publicacao)
+        botaoPerfil = findViewById(R.id.perfil)
 
+        inativaTodos()
         botaoHome.setImageDrawable(getResources().getDrawable(R.drawable.home))
-        botaoPublicao.setImageDrawable(getResources().getDrawable(R.drawable.nova_publicao_inativa))
-        botaoPerfil.setImageDrawable(getResources().getDrawable(R.drawable.user_inativo))
-        setFragment(FeedFragment(), resources.getString(R.string.rota_home))
+        Rotas(this).setRota(FeedFragment(), resources.getString(R.string.rota_home))
 
         botaoHome.setOnClickListener {
+            inativaTodos()
             botaoHome.setImageDrawable(getResources().getDrawable(R.drawable.home))
-            botaoPublicao.setImageDrawable(getResources().getDrawable(R.drawable.nova_publicao_inativa))
-            botaoPerfil.setImageDrawable(getResources().getDrawable(R.drawable.user_inativo))
-            setFragment(FeedFragment(), resources.getString(R.string.rota_home))
+            Rotas(this).setRota(FeedFragment(), resources.getString(R.string.rota_home))
         }
 
         botaoPublicao.setOnClickListener {
-            botaoHome.setImageDrawable(getResources().getDrawable(R.drawable.home_inativa))
+            inativaTodos()
             botaoPublicao.setImageDrawable(getResources().getDrawable(R.drawable.nova_publicacao))
-            botaoPerfil.setImageDrawable(getResources().getDrawable(R.drawable.user_inativo))
-            setFragment(NovaPublicacaoFragment(), resources.getString(R.string.rota_nova_publicacao))
+            Rotas(this).setRota(NovaPublicacaoFragment(), resources.getString(R.string.rota_nova_publicacao))
         }
 
         botaoPerfil.setOnClickListener {
-            botaoHome.setImageDrawable(getResources().getDrawable(R.drawable.home_inativa))
-            botaoPublicao.setImageDrawable(getResources().getDrawable(R.drawable.nova_publicao_inativa))
+            inativaTodos()
             botaoPerfil.setImageDrawable(getResources().getDrawable(R.drawable.user))
-            setFragment(PerfilFragment(), resources.getString(R.string.rota_perfil))
             val idUsuarioLogado = shared.getString("id_usuario_logado", "")
             val nomeUsuarioLogado = shared.getString("nome_usuario_logado", "")
             shared.edit().putString("id_perfil", idUsuarioLogado).apply()
             shared.edit().putString("nome_perfil", nomeUsuarioLogado).apply()
+            Rotas(this).setRota(PerfilFragment.newInstance(idUsuarioLogado), resources.getString(R.string.rota_perfil))
         }
 
         saveUsuario()
     }
 
-
-    fun setFragment(fragment: Fragment, rota: String){
+    fun inativaTodos(){
         val shared = getSharedPreferences("devagram", Context.MODE_PRIVATE)
-
-        val rotaAnterior = shared.getString("rota_atual", "")
-        shared.edit().putString("rota_anterior", rotaAnterior).apply()
-        shared.edit().putString("rota_atual", rota).apply()
-
-        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.frame_container, fragment)
-        ft.replace(R.id.header_container, HeaderFragment.newInstance())
-        ft.commit()
+        botaoHome.setImageDrawable(getResources().getDrawable(R.drawable.home_inativa))
+        botaoPublicao.setImageDrawable(getResources().getDrawable(R.drawable.nova_publicao_inativa))
+        botaoPerfil.setImageDrawable(getResources().getDrawable(R.drawable.user_inativo))
+        shared.edit().remove("id_perfil").apply()
+        shared.edit().remove("nome_perfil").apply()
+        shared.edit().remove("avatar_perfil").apply()
     }
 
     fun saveUsuario(){

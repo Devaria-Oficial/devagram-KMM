@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat
 import com.devaria.devagram.Validacoes
 import com.devaria.devagram.android.R
 import com.devaria.devagram.android.utils.Dialog
+import com.devaria.devagram.android.utils.Imagem
 import com.devaria.devagram.model.Cadastrar.Cadastrar
 import com.devaria.devagram.model.Login.Login
 import com.devaria.devagram.model.Login.ResponseErro
@@ -163,28 +164,14 @@ class CadastroActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
-            var imagem = editarImage(data.extras?.get("data") as Bitmap, 120, 120)
+            var imagem = Imagem().editarImage(data.extras?.get("data") as Bitmap, 120, 120)
             val stream = ByteArrayOutputStream()
             imagem!!.compress(Bitmap.CompressFormat.PNG, 100, stream)
             avatar = stream.toByteArray()
             foto.setImageBitmap(imagem)
             tirarFoto.visibility = View.GONE
             foto.visibility = View.VISIBLE
-
         }
-    }
-
-    fun editarImage(imagem: Bitmap, newHeigth: Int, newWidth: Int): Bitmap? {
-        val width = imagem.width
-        val heigth = imagem.height
-        val scaleWidth = newWidth.toFloat() / width
-        val scaleHeigth = newHeigth.toFloat() / heigth
-
-        val matrix = Matrix()
-        matrix.postScale(scaleWidth, scaleHeigth)
-
-        return Bitmap.createBitmap(imagem, 0, 0, width, heigth, matrix, false)
-
     }
 
     @TargetApi(Build.VERSION_CODES.M)
